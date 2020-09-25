@@ -13,15 +13,11 @@ public class GramaticasRegularesLF {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        Scanner argumento = null;
+        Scanner argumento = new Scanner (System.in);
         String teste;
         System.out.println("Informe as raizes:");
         teste = argumento.next();
         System.out.println(teste);
-        /* while(argumento.hasNext())  
-        {
-
-        }*/
         System.out.println("Informe os terminais:");
 
     }
