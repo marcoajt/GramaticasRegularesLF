@@ -11,13 +11,13 @@ public class GramaticasRegularesLF {
     Terminais E;
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        
 
-        Scanner argumento = new Scanner (System.in);
-        String teste;
+        Scanner scan = new Scanner (System.in);
+        String argumentos;
         System.out.println("Informe as raizes:");
-        teste = argumento.next();
-        System.out.println(teste);
+        argumentos = scan.next();
+        System.out.println(argumentos);
         System.out.println("Informe os terminais:");
 
     }
