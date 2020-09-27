@@ -8,7 +8,7 @@ public class Gramatica_Regular
 {
  public List<String> raizes = new ArrayList();
  public List<String> terminais = new ArrayList();
- public List<Regras> regras = new ArrayList();
+ public List<Regras> regras = new ArrayList(); //uma lista de listas
 
     public List<String> getRaizes() {
         return raizes;
@@ -30,7 +30,8 @@ public class Gramatica_Regular
         return regras;
     }
 
-    public void setRegras(String parametro_i, String parametro_f ) {
+    public void setRegras(String parametro) {
+     regras.add();//era pra estar adicionando uma lista e elemento
     }
 
    
