@@ -3,11 +3,11 @@ package gramaticasregulareslf;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Gramatica_Regular 
-{
- public List<String> raizes = new ArrayList();
- public List<String> terminais = new ArrayList();
- public List<Regras> conj_regras = new ArrayList(); //uma lista de listas
+public class Gramatica_Regular {
+
+    public List<String> raizes = new ArrayList();
+    public List<String> terminais = new ArrayList();
+    public List<Regras> conj_regras = new ArrayList(); //Uma lista de listas
 
     public List<String> getRaizes() {
         return raizes;
@@ -22,17 +22,11 @@ public class Gramatica_Regular
     }
 
     public void setTerminais(String parametro) {
-         this.terminais.add(parametro);
+        this.terminais.add(parametro);
     }
 
     public List<Regras> getConj_regras() {
         return conj_regras;
     }
 
-    public void setRegras(String parametro) {
-     //conj_regras.add();//era pra estar adicionando uma lista e elemento
-    }
-
-   
-  
 }
