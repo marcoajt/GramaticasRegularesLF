@@ -9,16 +9,26 @@ public class GramaticasRegularesLF {
 
     Raizes S;
     Terminais E;
+    static Gramatica_Regular G_R = new Gramatica_Regular ();
+            Regras R_E;
 
     public static void main(String[] args) {
         
 
         Scanner scan = new Scanner (System.in);
-        String argumentos;
+        String argumentos = null;
         System.out.println("Informe as raizes:");
-        argumentos = scan.next();
-        System.out.println(argumentos);
+        while(argumentos!="ç")
+        {
+         argumentos = scan.next();
+         G_R.setRaizes(argumentos);
+        }
         System.out.println("Informe os terminais:");
+        while(argumentos!="ç")
+        {
+         argumentos = scan.next();
+         G_R.setTerminais(argumentos);
+        }
 
     }
 
