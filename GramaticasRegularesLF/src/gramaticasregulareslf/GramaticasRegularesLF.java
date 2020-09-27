@@ -10,7 +10,7 @@ public class GramaticasRegularesLF {
 
         Scanner scan = new Scanner(System.in);
         String argumento = new String();
-        String resultado = new String();
+
         System.out.println("Informe as raizes:");
 
         while (!"4242564".equals(argumento)) {
@@ -51,42 +51,55 @@ public class GramaticasRegularesLF {
             }
             System.out.println("");
         }
-        //ONDE A MAGICA ACONTECE
-        System.out.println("Informe um termo para ser derivado:");
+
         while (!"4242564".equals(argumento)) {
-            resultado = "";
+
+            System.out.println("Informe um termo para ser derivado:");
             argumento = scan.next();
             if (!"4242564".equals(argumento)) {
-                char origem [] = argumento.toCharArray(); //TA RUIM
-                 for (int y = 0; y < origem.length; y++) {System.out.print(origem[y]+"- ");} //FALHA AQUI
-                 System.out.println("");
-                //StringBuilder aux1 = new StringBuilder();
-                //String aux2 = new String();
-                //String massa = new String();
-
-                for (int x = 0; x < G_R.raizes.size(); x++) {
-                    for (int y = 0; y < origem.length; y++) {
-
-                        StringBuilder aux1 = new StringBuilder();
-                        aux1.append(origem[y]);
-                        String aux2 = aux1.toString();
-                        if (G_R.raizes.get(x).equals(aux2)) {
-                            for (int z = 0; z < origem.length; z++) {
-                                if (y != z) {
-                                    StringBuilder argamassa=new StringBuilder();
-                                    argamassa.append(origem[z]);
-                                    resultado = resultado + argamassa.toString();
-                                } else {
-                                    resultado = resultado + G_R.conj_regras.get(x).derivacao.get(0);
-                                }
-                            }
-
-                        }
-                    }
-                }
+                gerador(argumento);
 
             }
-            System.out.println(resultado);
+
         }
+    }
+
+    //ONDE A MAGICA ACONTECE
+    public static void gerador(String parametro) {
+        String resultado = new String();
+        boolean aux = false;
+        char origem[] = parametro.toCharArray();
+        //for (int y = 0; y < origem.length; y++) {System.out.print(origem[y]+"[]");} 
+        System.out.println("");
+        //StringBuilder aux1 = new StringBuilder();
+        //String aux2 = new String();
+        //String massa = new String();
+
+        for (int x = 0; x < G_R.raizes.size(); x++) {
+            for (int y = 0; y < origem.length; y++) {
+
+                StringBuilder aux1 = new StringBuilder();
+                aux1.append(origem[y]);
+                String aux2 = aux1.toString();
+                if (G_R.raizes.get(x).equals(aux2)) {
+                    aux = true;
+                    for (int z = 0; z < origem.length; z++) {
+                        if (y != z) {
+                            StringBuilder argamassa = new StringBuilder();
+                            argamassa.append(origem[z]);
+                            resultado = resultado + argamassa.toString();
+                        } else {
+                            resultado = resultado + G_R.conj_regras.get(x).derivacao.get(0);
+                        }
+                    }
+
+                }
+            }
+        }
+        System.out.println(resultado);
+        if (aux == true) {
+            gerador(resultado);
+        }
+
     }
 }
