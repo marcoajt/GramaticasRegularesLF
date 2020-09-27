@@ -1,5 +1,6 @@
 package gramaticasregulareslf;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class GramaticasRegularesLF {
@@ -68,9 +69,10 @@ public class GramaticasRegularesLF {
     public static void gerador(String parametro) {
         String resultado = new String();
         boolean aux = false;
+        Random er = new Random();
         char origem[] = parametro.toCharArray();
         //for (int y = 0; y < origem.length; y++) {System.out.print(origem[y]+"[]");} 
-        System.out.println("");
+        //System.out.println("");
         //StringBuilder aux1 = new StringBuilder();
         //String aux2 = new String();
         //String massa = new String();
@@ -89,7 +91,8 @@ public class GramaticasRegularesLF {
                             argamassa.append(origem[z]);
                             resultado = resultado + argamassa.toString();
                         } else {
-                            resultado = resultado + G_R.conj_regras.get(x).derivacao.get(0);
+
+                            resultado = resultado + G_R.conj_regras.get(x).derivacao.get(er.nextInt(G_R.conj_regras.get(x).derivacao.size()));
                         }
                     }
 
