@@ -2,13 +2,12 @@ package gramaticasregulareslf;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Gramatica_Regular 
 {
  public List<String> raizes = new ArrayList();
  public List<String> terminais = new ArrayList();
- public List<Regras> regras = new ArrayList(); //uma lista de listas
+ public List<Regras> conj_regras = new ArrayList(); //uma lista de listas
 
     public List<String> getRaizes() {
         return raizes;
@@ -26,12 +25,12 @@ public class Gramatica_Regular
          this.terminais.add(parametro);
     }
 
-    public List<Regras> getRegras() {
-        return regras;
+    public List<Regras> getConj_regras() {
+        return conj_regras;
     }
 
     public void setRegras(String parametro) {
-     regras.add();//era pra estar adicionando uma lista e elemento
+     //conj_regras.add();//era pra estar adicionando uma lista e elemento
     }
 
    
