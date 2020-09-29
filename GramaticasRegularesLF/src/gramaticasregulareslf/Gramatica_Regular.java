@@ -40,7 +40,7 @@ public class Gramatica_Regular {
         return terminais;
     }
 
-    public void setTerminais(String parametro) {
+    public void setTerminais() {
         int i=0;
         System.out.println("Informe os terminais:");
         argumento=scan.nextLine();
@@ -48,7 +48,7 @@ public class Gramatica_Regular {
         System.out.println("Terminais de "+raizes.get(i));
         while (!"@".equals(argumento)) {
             
-            terminais.add(parametro);
+            terminais.add(argumento);
             //adição da funçção de pra testa se o parametro já existe em terminais
             argumento = scan.nextLine();
         }

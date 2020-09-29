@@ -7,7 +7,8 @@ public class GramaticasRegularesLF {
 
     public static void main(String[] args) {
         //criação do argumento string usado
-        
+        System.out.println("gramaticasregulareslf.GramaticasRegularesLF.main()");
+        ();
         
         
         /*
