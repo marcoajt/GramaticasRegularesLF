@@ -7,32 +7,17 @@ public class GramaticasRegularesLF {
 
     public static void main(String[] args) {
         //criação do argumento string usado
-        System.out.println("gramaticasregulareslf.GramaticasRegularesLF.main()");
-        ();
+        G_R.setRaizes();
+        G_R.criarTerminais();
+        G_R.getConj_regras();
         
-        
-        /*
-        //EXIBIÇÃO
-        for (int x = 0; x < G_R.conj_regras.size(); x++) {
-            int z = G_R.conj_regras.get(x).derivacao.size();
-            for (int y = 0; y < z; y++) {
-                System.out.print(G_R.conj_regras.get(x).derivacao.get(y) + " ");
-            }
-            System.out.println("");
+        for(Regras gr:G_R.getConj_regras()){
+            System.out.println(gr.toString());
         }
-
-        while (!"4242564".equals(argumento)) {
-
+        
             System.out.println("Informe um termo para ser derivado:");
-            argumento = scan.next();
-            if (!"4242564".equals(argumento)) {
-                gerador(argumento);
-
-            }
-
-        }
-    }
-
+            G_R.setTermoDerivavel();
+/*
     //ONDE A MAGICA ACONTECE
     public static void gerador(String parametro) {
         String resultado = new String();
