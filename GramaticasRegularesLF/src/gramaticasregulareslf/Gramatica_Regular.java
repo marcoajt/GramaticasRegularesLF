@@ -5,49 +5,28 @@ import java.util.List;
 
 public class Gramatica_Regular {
 
-    public List<String> raizes;
-    public List<String> terminais;
-    public List<Regras> conj_regras;
+    public List<String> raizes = new ArrayList();
+    public List<String> terminais = new ArrayList();
+    public List<Regras> conj_regras = new ArrayList(); //Uma lista de listas
 
-    public Gramatica_Regular() {
-        this.raizes = new ArrayList();
-        this.terminais = new ArrayList();
-        this.conj_regras = new ArrayList();//Uma lista de listas
+    public List<String> getRaizes() {
+        return raizes;
     }
-    /*
-    //GERADOR 1 ENTENDER ENTENDER E ENTENDER !!
-    public static void derivador(String parametro) {
-        String resultado = new String();
-        boolean aux = false;
-        Random choice = new Random();
-        char origem[] = parametro.toCharArray();
 
-        for (int x = 0; x < raizes.size(); x++) {
-            for (int y = 0; y < origem.length; y++) {
+    public void setRaizes(String parametro) {
+        this.raizes.add(parametro);
+    }
 
-                StringBuilder aux1 = new StringBuilder();
-                aux1.append(origem[y]);
-                String aux2 = aux1.toString();
-                if (raizes.get(x).equals(aux2)) {
-                    aux = true;
-                    for (int z = 0; z < origem.length; z++) {
-                        if (y != z) {
-                            StringBuilder argamassa = new StringBuilder();
-                            argamassa.append(origem[z]);
-                            resultado = resultado + argamassa.toString();
-                        } else {
+    public List<String> getTerminais() {
+        return terminais;
+    }
 
-                            resultado = resultado + conj_regras.get(x).regras.get(choice.nextInt(conj_regras.get(x).regras.size()));
-                        }
-                    }
+    public void setTerminais(String parametro) {
+        this.terminais.add(parametro);
+    }
 
-                }
-            }
-        }
-        System.out.println(resultado);
-        if (aux == true) {
-            derivador(resultado);
-        }
+    public List<Regras> getConj_regras() {
+        return conj_regras;
+    }
 
-    }*/
 }
