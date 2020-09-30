@@ -2,7 +2,7 @@ package gramaticasregulareslf;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
 import java.util.Scanner;
 
 public class Gramatica_Regular {
@@ -40,21 +40,24 @@ public class Gramatica_Regular {
     public void setTerminais() {
        terminais=new ArrayList();
    }
-
-    public void criarTerminais(){
+public void criarTerminais(){
+    
+    System.out.println("Adicione os terminais:");
+    argumento = scan.nextLine();
+    
+    while (!"@".equals(argumento)) {            
+            terminais.add(argumento);
+            argumento = scan.nextLine();
+        }
+    setArgumento("");
+}
+    public void criarRegras(){
          int i=0;
-        System.out.println("Informe os terminais:");
         do{
-            
-        System.out.println("Terminais de "+raizes.get(i));
         //adição da funçção de pra testa se o parametro já existe em terminais
         argumento = scan.nextLine();
         
-        while (!"@".equals(argumento)) {            
-            terminais.add(argumento);
-            //adição da funçção de pra testa se o parametro já existe em terminais
-            argumento = scan.nextLine();
-        }
+        
         
             setConj_regras(raizes.get(i));
             setArgumento("");
