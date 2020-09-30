@@ -4,21 +4,21 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Regras {
-    
+
     private String argumento;
 
-    public String raiz;
+    //public String raiz;
     public List<String> regras; //lista das derivações
-
+/*
     public Regras(String raiz) {
-        this.raiz=raiz.toUpperCase();
+        this.raiz = raiz.toUpperCase();
         setRegras();
     }
 
     public void setRegras() {
         Scanner scan = new Scanner(System.in);
         argumento = scan.nextLine();
-        while (!"@".equals(argumento)){
+        while (!"@".equals(argumento)) {
             regras.add(argumento);
             argumento = scan.nextLine();
         }
@@ -33,14 +33,9 @@ public class Regras {
         return regras;
     }
 
-    public String terminalEscolhido(int posicao){
-     return regras.get(posicao);
-    }
     @Override
     public String toString() {
-        return "Raiz "+raiz+" -> " + regras;
+        return "Raiz " + regras + " -> " + regras;
     }
-
-    
-
+*/
 }
