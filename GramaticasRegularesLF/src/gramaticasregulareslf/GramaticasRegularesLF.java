@@ -17,6 +17,8 @@ public class GramaticasRegularesLF {
         
             System.out.println("Informe um termo para ser derivado:");
             G_R.setTermoDerivavel();
+            System.out.println(G_R.gerador());
+            
 /*
     //ONDE A MAGICA ACONTECE
     public static void gerador(String parametro) {
