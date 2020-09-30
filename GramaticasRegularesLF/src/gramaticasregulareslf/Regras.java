@@ -1,31 +1,44 @@
 package gramaticasregulareslf;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class Regras {
+    
+    private String argumento;
 
     public String raiz;
-    public List<String> terminais; //lista das derivações
+    public List<String> regras; //lista das derivações
 
-    public Regras(String raiz,List<String> terminais) {
+    public Regras(String raiz) {
         this.raiz=raiz.toUpperCase();
-        this.terminais=terminais;
+        setRegras();
+    }
+
+    public void setRegras() {
+        Scanner scan = new Scanner(System.in);
+        argumento = scan.nextLine();
+        while (!"@".equals(argumento)){
+            regras.add(argumento);
+            argumento = scan.nextLine();
+        }
+        argumento = "";
     }
 
     public String getRaiz() {
         return raiz;
     }
 
-    public List<String> getTerminais() {
-        return terminais;
+    public List<String> getRegras() {
+        return regras;
     }
 
     public String terminalEscolhido(int posicao){
-     return terminais.get(posicao);
+     return regras.get(posicao);
     }
     @Override
     public String toString() {
-        return "Raiz "+raiz+" -> " + terminais;
+        return "Raiz "+raiz+" -> " + regras;
     }
 
     

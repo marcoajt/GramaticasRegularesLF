@@ -21,7 +21,7 @@ public class Gramatica_Regular {
         this.terminais = new ArrayList();
         this.conj_regras = new ArrayList(); //Uma lista de listas
         this.argumento=" ";
-        this.scan=new Scanner(System.in);;
+        this.scan=new Scanner(System.in);
     }
 
     public void setRaizes() {
@@ -53,23 +53,27 @@ public void criarTerminais(){
 }
     public void criarRegras(){
          int i=0;
+         System.out.println("Adicionar regras");
         do{
         //adição da funçção de pra testa se o parametro já existe em terminais
-        argumento = scan.nextLine();
+            System.out.println("Adicionar regras na "+raizes.get(i));
+
+            
+            conj_regras.add(new Regras(raizes.get(i)));
+            
         
         
-        
-            setConj_regras(raizes.get(i));
+            //setConj_regras(raizes.get(i));
             setArgumento("");
             i++;
       }while(i<raizes.size());
     }
         
     
-    public void setConj_regras(String raiz) {
+    /*public void setConj_regras(String raiz) {
         conj_regras.add(new Regras(raiz, terminais));
         setTerminais();
-    }
+    }*/
 
     public List<Regras> getConj_regras() {
         return conj_regras;
