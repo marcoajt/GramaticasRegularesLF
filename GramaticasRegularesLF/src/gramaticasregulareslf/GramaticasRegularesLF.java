@@ -10,7 +10,7 @@ public class GramaticasRegularesLF {
         G_R.setRaizes();
         G_R.criarTerminais();
         G_R.criarRegras();
-        G_R.getConj_regras();
+        
         
         for(Regras gr:G_R.getConj_regras()){
             System.out.println(gr.toString());
@@ -18,10 +18,10 @@ public class GramaticasRegularesLF {
         
             System.out.println("Informe um termo para ser derivado:");
             G_R.setTermoDerivavel();
-            System.out.println(G_R.gerador());
+            
             
 /*
-    //ONDE A MAGICA ACONTECE
+    //GERADOR 1 ENTENDER ENTENDER E ENTENDER !!
     public static void gerador(String parametro) {
         String resultado = new String();
         boolean aux = false;

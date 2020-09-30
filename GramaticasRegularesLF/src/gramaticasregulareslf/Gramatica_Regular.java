@@ -57,12 +57,7 @@ public void criarTerminais(){
         do{
         //adição da funçção de pra testa se o parametro já existe em terminais
             System.out.println("Adicionar regras na "+raizes.get(i));
-
-            
             conj_regras.add(new Regras(raizes.get(i)));
-            
-        
-        
             //setConj_regras(raizes.get(i));
             setArgumento("");
             i++;
@@ -87,6 +82,9 @@ public void criarTerminais(){
         termoDerivavel=scan.nextLine()+'\0';
     }
     
+    
+    
+    /*
     public String gerador(){
         StringBuilder gerado=new StringBuilder();
         int tam=termoDerivavel.length();
@@ -94,7 +92,7 @@ public void criarTerminais(){
         boolean tr=false;
         
         for(int x=0;!tr;x--){
-            tr=testeRaiz(gerado);
+            //tr=testeRaiz(gerado);
             
             
         }
@@ -110,7 +108,7 @@ public void criarTerminais(){
 return false;
     }
     
-   /* public String gerador(){
+    public String gerador(){
         String tEscolhido;
         Random r=new Random();
         int tr,escolheTerminal,tam,y=termoDerivavel.length();
