@@ -9,6 +9,7 @@ public class GramaticasRegularesLF {
         //criação do argumento string usado
         G_R.setRaizes();
         G_R.criarTerminais();
+        G_R.criarRegras();
         G_R.getConj_regras();
         
         for(Regras gr:G_R.getConj_regras()){
