@@ -66,31 +66,31 @@ public class GramaticasRegularesLF {
     }
 
     //ONDE A MAGICA ACONTECE
-    public static void gerador(String parametro) {
-        String resultado = new String();
-        boolean aux = false;
-        Random er = new Random();
-        char origem[] = parametro.toCharArray();
+    public static void gerador(String parametro) { //Tem a função de derivar as palavras
+        String resultado = new String(); //Onde fica a palavra completamente derivada
+        boolean aux = false;//verdadeiro se encontrar uma raiz na palavra, só falso se não houver mais raizes, palavra estiver completamente derivada
+        Random er = new Random();//escolher regra
+        char origem[] = parametro.toCharArray();//termo para ser derivado
         //for (int y = 0; y < origem.length; y++) {System.out.print(origem[y]+"[]");} 
         //System.out.println("");
         //StringBuilder aux1 = new StringBuilder();
         //String aux2 = new String();
         //String massa = new String();
 
-        for (int x = 0; x < G_R.raizes.size(); x++) {
-            for (int y = 0; y < origem.length; y++) {
+        for (int x = 0; x < G_R.raizes.size(); x++) { //percorre o numero de raizes existentes
+            for (int y = 0; y < origem.length; y++) { //percorre a palavra digitada pelo usuario, caracter por caracter
 
                 StringBuilder aux1 = new StringBuilder();
                 aux1.append(origem[y]);
-                String aux2 = aux1.toString();
-                if (G_R.raizes.get(x).equals(aux2)) {
+                String aux2 = aux1.toString(); //passando primeira letra da palavra do usuario para string
+                if (G_R.raizes.get(x).equals(aux2)) { //compara se a letra = a alguma raiz
                     aux = true;
-                    for (int z = 0; z < origem.length; z++) {
-                        if (y != z) {
+                    for (int z = 0; z < origem.length; z++) { //tambem percorre palavra
+                        if (y != z) { //verifica se a letra é diferente da letra que foi encontrada e é igual a uma raiz
                             StringBuilder argamassa = new StringBuilder();
                             argamassa.append(origem[z]);
                             resultado = resultado + argamassa.toString();
-                        } else {
+                        } else {//caso seja uma raiz ele faz a substituição por uma regra
 
                             resultado = resultado + G_R.conj_regras.get(x).derivacao.get(er.nextInt(G_R.conj_regras.get(x).derivacao.size()));
                         }
