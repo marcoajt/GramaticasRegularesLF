@@ -129,12 +129,13 @@ public class GramaticasRegularesLF {
             i++; // SOMA O CONTADOR PARA AVANCAR PARA OUTRA NAO TERMINAL
         } while (i < G_R.conj_regras.size());
 
-        ///*
+       
         //EXIBIÇÃO
         System.out.println("Regras:"); //INTERACAO COM O USUARIO
         for (int x = 0; x < G_R.conj_regras.size(); x++) { //PERCORRE TODOS CONJUNTOS DE REGRAS
             int z = G_R.conj_regras.get(x).derivacoes.size(); //DEFINE Z O TAMANHO DESTA LISTA DE REGRAS
             for (int y = 0; y < z; y++) { //PERCORRE TODAS REGRAS DESTE CONJUNTO E REALIZA A EXIBICAO SENDO CADA LINHA REGRAS DE UMA NAO-TERMINAL
+                System.out.print(G_R.nao_terminais.get(x) + " -> "); //EXIBE QUAL NAO-TERMINAL PERTENCE A REGRA
                 System.out.print(G_R.conj_regras.get(x).derivacoes.get(y) + " "); //INTERACAO COM O USUARIO
             }
             System.out.println("\n");
@@ -144,7 +145,7 @@ public class GramaticasRegularesLF {
             System.out.print(cont_alfa[x] + " - "); //INTERACAO COM O USUARIO
         }
         System.out.println("\n");
-        //*/
+        
 
         System.out.println("Informe o simbolo inicial (raiz) para gerar aleatoriamente uma palavra pertencente a esta gramatica regular \n (adicione com enter ao fim) \n digite @ para finalizar: "); //INTERACAO COM O USUARIO
         argumento = scan.next();
