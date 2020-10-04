@@ -204,11 +204,11 @@ public class GramaticasRegularesLF {
         finale = resultado.toCharArray(); //RESULTADO E TRANFORMADA EM VETOR
         resultado = ""; //RESULTADO É LIMPA
         for (int z = 0; z < finale.length; z++) { //PERCORRE TODOS CARACTERES
-            if (finale[z] != '&' && finale.length<100) { //VERIFICA, SE NAO FOR UM SIMBOLO DE VAZIO CONCATENA RESULTADO
+            if (finale[z] != '&' && finale.length<200) { //VERIFICA, SE NAO FOR UM SIMBOLO DE VAZIO CONCATENA RESULTADO
                 StringBuilder argamassa = new StringBuilder();
                 argamassa.append(finale[z]);
                 resultado = resultado + argamassa.toString(); //A PALAVRA É REESCRITA SEM O SIMBOLO DE VAZIO
-            } else if (finale.length == 100)
+            } else if (finale.length == 200)
              {
               aux=false;
              }
