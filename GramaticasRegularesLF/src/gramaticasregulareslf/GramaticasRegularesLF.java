@@ -18,13 +18,14 @@ public class GramaticasRegularesLF {
         char[] cont_regra_0; //VARIAVEL USADA PARA REALIZAR VERIFICACAO DE EXCECOES
         List<String> cont_regra_1 = new ArrayList(); //VARIAVEL USADA PARA REALIZAR VERIFICACAO DE EXCECOES
         boolean verificador; //VARIAVEL USADA PARA REALIZAR VERIFICACAO DE EXCECOES
+        boolean caso_do_meio;
         int cont_0; //VARIAVEL USADA PARA REALIZAR VERIFICACAO DE EXCECOES
         int cont_1; //VARIAVEL USADA PARA REALIZAR VERIFICACAO DE EXCECOES
 
         alfa = alfa + "&"; //DEFININDO QUE O PRIMEIRO ELEMENTO DO ALFABETO É O VAZIO
 
         System.out.println("Informe as variaveis nao-terminais \n (adicione cada uma com enter ao fim) \n digite @ para avancar: "); //INTERACAO COM O USUARIO
-        argumento = scan.next(); 
+        argumento = scan.next();
         while (!"@".equals(argumento)) { //ENQUANTO O USUARIO NAO DIGITAR @ CONTINUARA NA INSERCAO DE VARIAVEIS NAO-TERMINAIS
             verificador = false; //VARIAVEL TODA VEZ QUE ENTRA NESSA FUNCAO É DEFINIDA EM FALSE
             for (int x = 0; x < G_R.nao_terminais.size(); x++) { //PERCORRE TODAS NAO TERMINAIS
@@ -85,6 +86,7 @@ public class GramaticasRegularesLF {
                 cont_0 = 0; //VARIAVEL USADA PARA VERIFICACAO DE EXCECAO
                 cont_1 = 0; //VARIAVEL USADA PARA VERIFICACAO DE EXCECAO
                 verificador = false; //VARIAVEL TODA VEZ QUE ENTRA NESSA FUNCAO É DEFINIDA EM FALSE
+                caso_do_meio = true; //VARIAVEL TODA VEZ QUE ENTRA NESSA FUNCAO É DEFINIDA EM TRUE
                 cont_regra_0 = argumento.toCharArray(); //ARGUMENTO E PASSADO PARA FORMA DE ARRAY PARA PODER SER ANALISADO MELHOR
                 cont_regra_1.clear(); //LISTA COM CARACTERES E LIMPA
 
@@ -95,28 +97,27 @@ public class GramaticasRegularesLF {
                         }
                     }
                 }
-
+                
                 for (int x = 0; x < cont_regra_0.length; x++) { //PERCORRE TODOS OS CARACTERES DIGITADOS PELO USUARIO
                     for (int y = 0; y < G_R.nao_terminais.size(); y++) { //PERCORRE TODAS VARIAVEIS NAO-TERMINAIS
                         StringBuilder aux_0 = new StringBuilder(); //CRIA UMA STRINGBUILDER
                         aux_0.append(cont_regra_0[x]); //ADICIONA O CARACTER QUE ESTA SENDO ANALISADO
                         String aux_1 = aux_0.toString(); //PASSA O CARACTER PARA O MODELO STRING
-                        if (aux_1.contains(G_R.nao_terminais.get(y))) { //VERIFICA SE O CARACTER É IGUAL A ALGUMA VARIAVEL NAO TERMINAL
-                            //cont_regra_1.add(aux_1); //CASO SEJA, ELA E ARMAZENADA NA LISTA DE STRING 
-                            cont_1++; //SOMA SE SIM
+                        if (aux_1.contains(G_R.nao_terminais.get(y))) { //VERIFICA SE O CARACTER É IGUAL A ALGUMA VARIAVEL NAO-TERMINAL
+                            if ((x == 0 || x == cont_regra_0.length-1)) { //VERIFICA SE É A ULTIMA OU PRIMEIRA POSICAO DA REGRA PARA GARANTIR QUE SEJA LINEAR A DIREITA OU A ESQUERDA
+                                caso_do_meio = false; 
+                            }
+                            cont_1++; //SOMA SE É IGUAL A ALGUMA NAO-TERMINAL
                         }
                     }
                 }
-/*
-                for (int x = 0; x < cont_regra_1.size(); x++) { //PERCORRE A LISTA COM OS TERMOS DIGITADOS PELO USUARIO QUE ERAM IGUAIS A UMA RAIZ
-                    for (int y = 0; y < cont_regra_1.size(); y++) {
-                        if (cont_regra_1.get(x).contains(cont_regra_1.get(y)) && x != y) {
-                            verificador = true; //DEFINE TRUE SINALIZANDO QUE HOUVE UMA EXCECAO
-                        }
-                    }
+                
+                if(cont_1 == 0) //VERIFICA SE NENHUMA NAO-TERMINAL FOI DIGITADA
+                {
+                 caso_do_meio = false; //FALSO CASO NAO HAJA PROBLEMAS E NENHUM RISCO DE QUEBRA DE LINEARIDADE 
                 }
-*/
-                if (cont_0 == cont_regra_0.length && verificador == false && cont_1<2) { //CASO SEJA CONT_0 IGUAL O TAMANHO DA PALAVRA DIGITADA SIGNIFICA QUE TODOS CARACTERES PERTENCEM AO ALFABETO QUE FOI GERADO, CASO NENHUMA EXCECAO TENHA SIDO ALERTADA E CASO CONT_1 DEMONSTRE QUE HA MENOS DE DUAS NAO-TERMINAIS NO TERMO ENTAO O PROCESSO SEGUE
+                
+                if (cont_0 == cont_regra_0.length && cont_1 < 2 && caso_do_meio == false) { //CASO SEJA CONT_0 IGUAL O TAMANHO DA PALAVRA DIGITADA SIGNIFICA QUE TODOS CARACTERES PERTENCEM AO ALFABETO QUE FOI GERADO, CASO CONT_1 DEMONSTRE QUE HA MENOS DE DUAS NAO-TERMINAIS NO TERMO E CASO NAO HAJA NENHUMA QUEBRA DE LINEARIDADE ENTAO O PROCESSO SEGUE
                     G_R.conj_regras.get(i).derivacoes.add(argumento); //A REGRA E ADICIONADA NA LISTA DE REGRAS
                     System.out.println("\nInserido com sucesso!\n"); //INTERACAO COM O USUARIO
                 } else {
