@@ -208,14 +208,14 @@ public class GramaticasRegularesLF {
                 StringBuilder argamassa = new StringBuilder();
                 argamassa.append(finale[z]);
                 resultado = resultado + argamassa.toString(); //A PALAVRA É REESCRITA SEM O SIMBOLO DE VAZIO
-            } else if (finale.length == 200)
+            } else if (finale.length == 200) //CASO A PALAVRA TOTAL TENHA ALCANCADO 200 CARACTERES 
              {
-              aux=false;
+              aux=false; //PARA DE DERIVAR 
              }
         }
-        if(infinity == 100)
+        if(infinity == 100) //VERIFICA SE FORAM FEITAS 100 DERIVACOES
         {
-         aux=false;    
+         aux=false; //PARA DE DERIVAR CASO SIM
         }
 
         if (aux == true) { //CASO TRUE A RECURSIVA É ATIVADA
