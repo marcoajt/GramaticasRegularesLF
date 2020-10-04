@@ -8,7 +8,9 @@ import java.util.Scanner;
 public class GramaticasRegularesLF {
 
     static Gramatica_Regular G_R = new Gramatica_Regular(); //VARIAVEL QUE CONTEM LISTAS COM AS VARIAVEIS TERMINAIS, NAO-TERMINAIS E CONJUNTOS DE REGRAS PARA CADA NAO TERMINAL
-
+    
+    static int infinity; //VARIAVEL USADA PARA REALIZAR VERIFICACAO DE EXCECOES
+    
     public static void main(String[] args) { //MAIN ONDE TUDO ACONTECE
 
         String argumento; //VARIAVEL USADA PARA INTERAGIR COM O USUARIO
@@ -154,6 +156,7 @@ public class GramaticasRegularesLF {
             verificador = false; //VARIAVEL TODA VEZ QUE ENTRA NESSA FUNCAO É DEFINIDA EM FALSE
             for (int x = 0; x < G_R.nao_terminais.size(); x++) { //PERCORRE TODAS NAO-TERMINAIS
                 if (G_R.nao_terminais.get(x).contains(argumento) && !argumento.contains("@")) { //VERIFICA SE O USUARIO DIGITOU CORRETAMENTE 
+                    infinity=0;
                     derivador(argumento); // SE SIM MANDA PARA O DERIVADOR
                     verificador = true; //DEFINE TRUE SINALIZANDO QUE NAO HOUVE UMA EXCECAO
                 }
@@ -165,14 +168,14 @@ public class GramaticasRegularesLF {
         }
 
     }
-
+      
     public static void derivador(String parametro) { //ONDE AS PALAVRAS SAO DERIVADAS
         String resultado = new String(); //VARIAVEL FINAL QUE SERA MOSTRADA PARA O USUARIO
         boolean aux = false; //VARIAVEL TODA VEZ QUE ENTRA NESSA FUNCAO É DEFINIDA EM FALSE
         Random choice = new Random(); //VARIAVEL USADA PARA SORTEAR O CAMINHO QUE SERA SEGUIDO
         char origem[] = parametro.toCharArray(); //ORIGEM RECEBE O PARAMETRO EM FORMATO DE ARRAY
         char finale[]; //VARIAVEL USADA PARA TRATAR SIMBOLO VAZI0
-
+        
         for (int x = 0; x < G_R.nao_terminais.size(); x++) { //PERCORRE TODAS NAO-TERMINAIS
             for (int y = 0; y < origem.length; y++) { //PERCORRE TODO TERMO DIGITADO PELO USUARIO
 
@@ -181,6 +184,7 @@ public class GramaticasRegularesLF {
                 String aux2 = aux1.toString(); //ENTAO TRANSFORMADO EM STRING
 
                 if (G_R.nao_terminais.get(x).equals(aux2)) { //E COMPARADO SE IGUAL A ALGUMA NAO TERMINAL
+                    infinity++;
                     aux = true; //AUX DEFINIDA EM TRUE SIMBOLIZANDO QUE UM TERMO A SER DERIVADO FOI ENCONTRADO E A FUNCAO DEVE SER CHAMADA NOVAMENTE PARA VERIFICACAO
                     for (int z = 0; z < origem.length; z++) { //FAZ O MESMO QUE A SEGUNDA FOR, PERCORRE TODO TERMO DIGITADO PELO USUARIO
                         if (y != z && origem[z] != '&') { //COMPARA SE O CARACTER E DIFERENTE DO QUE FOI ACHADO E É IGUAL A UMA NAO-TERMINAL
@@ -200,11 +204,18 @@ public class GramaticasRegularesLF {
         finale = resultado.toCharArray(); //RESULTADO E TRANFORMADA EM VETOR
         resultado = ""; //RESULTADO É LIMPA
         for (int z = 0; z < finale.length; z++) { //PERCORRE TODOS CARACTERES
-            if (finale[z] != '&') { //VERIFICA, SE NAO FOR UM SIMBOLO DE VAZIO CONCATENA RESULTADO
+            if (finale[z] != '&' && finale.length<100) { //VERIFICA, SE NAO FOR UM SIMBOLO DE VAZIO CONCATENA RESULTADO
                 StringBuilder argamassa = new StringBuilder();
                 argamassa.append(finale[z]);
                 resultado = resultado + argamassa.toString(); //A PALAVRA É REESCRITA SEM O SIMBOLO DE VAZIO
-            }
+            } else if (finale.length == 100)
+             {
+              aux=false;
+             }
+        }
+        if(infinity == 100)
+        {
+         aux=false;    
         }
 
         if (aux == true) { //CASO TRUE A RECURSIVA É ATIVADA
